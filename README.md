@@ -1,26 +1,32 @@
-# Entre nosotros · juego de campo (PWA)
+# BANDO — Juego de campo
 
-Prototipo instalable de juego exterior con mapa real, área dibujada, tareas sorteadas y minijuego de código.
+Aplicación web progresiva para una partida de deducción en exteriores. La interfaz usa React y Vite; el mapa se dibuja con Leaflet y OpenStreetMap.
 
-## Abrirlo
+## Importante: no abrir index.html directamente
 
-Sirve esta carpeta desde un alojamiento HTTPS estático. Para desarrollo también funciona en `localhost`. En el móvil abre la URL y usa «Añadir a pantalla de inicio» para instalarla. El mapa y la búsqueda de lugares requieren conexión a internet.
+Abrir el archivo como `file://` impide cargar módulos web y puede bloquear el mapa y la búsqueda. Usa el servidor de desarrollo:
 
-## Probar la partida
+1. Instala Node.js 20.19 o superior.
+2. En esta carpeta, ejecuta `npm install` una vez.
+3. Ejecuta `npm run dev`.
+4. Abre en el ordenador la dirección local que muestre la terminal (por defecto `http://localhost:5173`).
 
-1. Escribe entre cuatro y diez nombres.
-2. Busca una aldea, parque o usa «Mi ubicación».
-3. Pulsa «Dibujar zona», marca al menos tres esquinas de un área exterior segura y cierra la zona.
-4. Crea la partida. Toca el mapa durante la partida para simular dónde estás y probar las tareas; los objetivos se sortean dentro del perímetro.
-5. Acércate a una tarea (el prototipo usa un radio aproximado de 25 m) y resuelve el minijuego. Convoca una reunión para probar la votación.
+Incluimos `INICIAR-BANDO.bat`: haz doble clic para abrir la aplicación en Windows. Necesita Node.js 20.19 o superior y conexión durante la primera instalación.
 
-## Qué trae
+## Uso
 
-- Interfaz adaptable e instalable como PWA, con carcasa cacheada por service worker.
-- Mapa real OpenStreetMap y búsqueda de lugares.
-- Perímetro dibujable, tareas aleatorias, progreso, temporizador, retos, sabotaje, reuniones y votación demostrativa.
-- Ubicación del dispositivo bajo petición y opción de simularla tocando el mapa.
+1. Añade de 4 a 10 nombres y selecciona a qué persona representa este dispositivo.
+2. Busca una localidad o dirección, o centra el mapa en el teléfono.
+3. Pulsa **Dibujar zona**, marca al menos tres puntos sobre el mapa y ciérrala.
+4. Crea la partida. Se sortean tareas dentro del área elegida.
+5. Pulsa **Probar sin GPS** y toca el mapa para simular movimiento; o activa **Seguir mi posición** desde el móvil.
+6. Acércate a una tarea, abre el reto, completa el código y prueba las reuniones o acciones del impostor.
 
-## Límite importante
+## Para probar desde un teléfono
 
-Es un prototipo local: no hay servidores ni sincronización entre teléfonos. La partida y el voto no se comparten; los nombres son de demostración para probar la interfaz en un único móvil. Para que cada persona juegue desde su propio dispositivo hay que añadir salas online, autenticación/códigos de unión y un servidor de tiempo real. El GPS no detecta paredes ni comprueba línea de visión. El anfitrión debe revisar el área y no colocar tareas en carreteras, propiedades privadas u otros lugares no seguros. Verifica las condiciones de uso del proveedor cartográfico antes de publicar a gran escala.
+El mapa y la búsqueda funcionan desde la dirección local si el ordenador y el móvil están en la misma Wi-Fi; usa la IP local del ordenador y el puerto 5173. Los navegadores móviles suelen exigir HTTPS para dar acceso GPS y permitir instalar la PWA. Para probar esas funciones en el teléfono, sube los archivos dentro de `dist` a un alojamiento HTTPS estático. El ZIP `BANDO-web.zip` ya contiene ese paquete listo para publicar. No abras el HTML desde un gestor de archivos.
+
+## Estado de esta versión
+
+La interfaz y el bucle de juego funcionan en modo local para probar mapas, tareas y pantallas. Todavía no hay salas en línea ni sincronización entre los teléfonos del grupo. El servicio de mapas y la búsqueda necesitan internet. OpenStreetMap exige atribución; revisa los términos de sus servicios antes de un lanzamiento público. Las tareas se sortean dentro del polígono, pero el anfitrión debe comprobar que el área no incluya vías, propiedades privadas ni lugares peligrosos.
+
